@@ -1,0 +1,19 @@
+<div class="col-md-12">
+    <div class="page-header">
+        <a class='btn btn-default pull-right' href='/admin/orders'>
+            <i class="fa fa-users"></i>&nbsp;Back To Orders
+        </a>
+        <a class='btn btn-default pull-right' href='/admin/orders/{{order.id}}'>
+            <i class="fa fa-user"></i>&nbsp;Back
+        </a>
+        <h1>Editing {{order.name}}</h1>
+    </div>
+</div>
+<div class='col-md-6 col-md-offset-3'>
+    <div class='panel panel-primary'>
+        <div class='panel-heading'>Order Information</div>
+        <div class='panel-body'>
+            <ng-include src="'/angular/admin/orders/form.html'"></ng-include>
+        </div>
+    </div>
+</div>
