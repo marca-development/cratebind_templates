@@ -13,7 +13,7 @@ and then run bundle update.
 
 ## Generators
 
-The gem has four (5) generators:
+The gem has five (5) generators:
 
 1. cratebind:controller NAME
 	- generates Api::ResourceController template following our standard practice
