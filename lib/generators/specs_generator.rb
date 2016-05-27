@@ -40,13 +40,13 @@ describe Api::#{class_name.pluralize}Controller, type: :controller do
     end
 
     it 'should be able to filter by q' do
-      #{model_name} = create(:edge_#{model_name}, name: 'Weird')
+      #{model_name} = create(:#{model_name}, name: 'Weird')
       get :index, {q: {name_cont: 'Weird'}}, valid_session
       expect(assigns(:resources)).to eq([#{model_name}])
     end
 
     it 'should be able to download a csv' do
-      #{model_name} = create(:edge_#{model_name}, name: 'CSV')
+      #{model_name} = create(:#{model_name}, name: 'CSV')
       get :index, {q: {name_cont: #{model_name}.name}, format: :csv}, valid_session
       expect(assigns(:resources)).to eq([#{model_name}])        
     end
