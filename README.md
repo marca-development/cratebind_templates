@@ -32,7 +32,9 @@ The gem has five (5) generators:
 	- adds the routing to app/assets/javascripts/namespace/angular/routing.js
 	- generates a standard Angular resource controller in app/assets/javascripts/namespace/angular/controllers/names.js
 	- assumes the Angular app is named ```namespaceApp```
-5. cratebind:resource NAME
+5. cratebind:specs NAME
+	- generates a standard api controller spec based on a typical CRUD resource
+6. cratebind:resource NAME
 	- runs all of the above
 
 ## Usage

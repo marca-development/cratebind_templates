@@ -8,6 +8,7 @@ module Cratebind
 	  		generate "cratebind:controllers", name
 	  		generate "cratebind:views", name
 	  		generate "cratebind:angular", name
+	  		generate "cratebind:specs", name
 		end
 	end
 end
