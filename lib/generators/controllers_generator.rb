@@ -11,11 +11,10 @@ module Cratebind
 
 		def create_controller
 			columns = class_name.constantize.column_names.collect(&:to_sym)
-			plural_class_name = plural_name.constantize
 			columns.delete(:id)
 			columns = columns.to_s.gsub('[','').gsub(']','')
 			create_file "app/controllers/api/#{plural_name}_controller.rb", <<-FILE
-class Api::#{plural_class_name}Controller < Api::ResourceController
+class Api::#{class_name.pluralize}Controller < Api::ResourceController
 	wrap_parameters :#{plural_name.singularize}, include: [#{columns}]
 	load_and_authorize_resource class: #{class_name}
 
