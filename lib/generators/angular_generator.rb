@@ -153,7 +153,7 @@ module Cratebind
 
     	def create_angular_controller
     		copy_file "angular_controller.rb", "app/controllers/angular_controller.rb"
-    		route "get '/angular/*a', to: 'angular#show'"
+    		# route "get '/angular/*a', to: 'angular#show'"
     	end
 
     	def angular_routing
