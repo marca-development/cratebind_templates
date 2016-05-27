@@ -10,7 +10,7 @@ module Cratebind
 			columns.delete(:id)
 			model_name = class_name.downcase
 			columns = columns.to_s.gsub('[','').gsub(']','')
-			create_file "app/spec/controllers/api/#{plural_name}_controller_spec.rb", <<-FILE
+			create_file "spec/controllers/api/#{plural_name}_controller_spec.rb", <<-FILE
 require 'rails_helper'
 describe Api::#{class_name.pluralize}Controller, type: :controller do
   render_views
