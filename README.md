@@ -5,7 +5,7 @@
 Add the gem to your Gemfile
 ```
 group :development do
-	gem 'cratebind_templates', git: 'https://git.cratebind.com/open-source/cratebind_templates.git'
+	gem 'cratebind_templates', git: 'https://git.cratebind.com/open-source/cratebind_templates.git', require: 'cratebind'
 end
 ```
 

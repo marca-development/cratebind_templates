@@ -65,10 +65,10 @@ module Cratebind
     		create_file "angular/#{@namespace}/#{plural_name}/new.html", <<-FILE
 <div class="col-md-12">
     <div class="page-header">
-        <a class='btn btn-default pull-right' href='/#{namespace}/#{plural_name}'>
+        <a class='btn btn-default pull-right' href='/#{@namespace}/#{plural_name}'>
             <i class="fa fa-users"></i>&nbsp;Back To #{plural_name.titlecase}
         </a>
-        <a class='btn btn-default pull-right' href='/#{namespace}/#{plural_name}/{{#{name}.id}}'>
+        <a class='btn btn-default pull-right' href='/#{@namespace}/#{plural_name}/{{#{name}.id}}'>
             <i class="fa fa-user"></i>&nbsp;Back
         </a>
         <h1>New #{name.titlecase}</h1>
@@ -78,7 +78,7 @@ module Cratebind
     <div class='panel panel-primary'>
         <div class='panel-heading'>#{name.titlecase} Information</div>
         <div class='panel-body'>
-            <ng-include src="'/angular/#{namespace}/#{plural_name}/form.html'"></ng-include>
+            <ng-include src="'/angular/#{@namespace}/#{plural_name}/form.html'"></ng-include>
         </div>
     </div>
 </div>			
@@ -89,7 +89,7 @@ module Cratebind
     		create_file "angular/#{@namespace}/#{plural_name}/show.html", <<-FILE
 <div class="col-md-10 col-md-offset-1">
     <div class="page-header">
-        <a class='btn btn-white btn-cons pull-right' href='/#{namespace}/#{plural_name}'>
+        <a class='btn btn-white btn-cons pull-right' href='/#{@namespace}/#{plural_name}'>
             <i class="fa fa-home"></i>&nbsp;Back To #{plural_name.titlecase}
         </a>
         <h1>New #{name.titlecase}</h1>
@@ -117,10 +117,10 @@ module Cratebind
     <div class='panel panel-primary'>
         <div class="panel-heading clearfix">
             <i class="fa fa-users"></i>#{plural_name.titlecase}
-        <a class='btn btn-default btn-xs pull-right' href='/#{namespace}/#{plural_name}/new'>
+        <a class='btn btn-default btn-xs pull-right' href='/#{@namespace}/#{plural_name}/new'>
             <i class="fa fa-plus"></i>&nbsp;Add #{name.titlecase}
         </a>
-        <a class='btn btn-default btn-xs pull-right' target='_self' href='/api/#{plural_name}.csv?{{ransackParams(q)}}' ng-if='currentUser.role == "#{namespace}"'>
+        <a class='btn btn-default btn-xs pull-right' target='_self' href='/api/#{plural_name}.csv?{{ransackParams(q)}}'>
             <i class="fa fa-file-excel-o"></i>&nbsp;Download
         </a>        
         </div>
@@ -142,7 +142,7 @@ module Cratebind
             </thead>
             <tbody>
                 <tr ng-repeat='#{name} in #{plural_name}'>
-                    <td><a href='/#{namespace}/#{plural_name}/{{#{name}.id}}'>{{#{name}.id}}</a></td>
+                    <td><a href='/#{@namespace}/#{plural_name}/{{#{name}.id}}'>{{#{name}.id}}</a></td>
                 </tr>
             </tbody>
         </table>
@@ -268,7 +268,7 @@ module Cratebind
         $scope.save#{name.titlecase} = function(#{name}) {
             #{name.titlecase}.save(#{name}, function(res) {
                 railsMessages.add('#{name.titlecase} was created successfully', 'alert alert-success');
-                $location.path('/#{namespace}/#{plural_name}/' + res.id);
+                $location.path('/#{@namespace}/#{plural_name}/' + res.id);
             }, function(err) {
                 railsMessages.process(err);
             });
@@ -289,7 +289,7 @@ module Cratebind
                 id: #{name}.id
             }, function(res) {
                 railsMessages.add('#{name.titlecase} was updated successfully', 'alert alert-success');
-                $location.path('/#{namespace}/#{plural_name}/' + res.id);
+                $location.path('/#{@namespace}/#{plural_name}/' + res.id);
             }, function(err) {
                 railsMessages.process(err);
             });
