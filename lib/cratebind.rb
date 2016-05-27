@@ -4,6 +4,7 @@ require 'generators/controllers_generator'
 require 'generators/views_generator'
 require 'generators/angular_generator'
 require 'generators/resource_generator'
+require 'generators/specs_generator'
 
 module Cratebind
 end
