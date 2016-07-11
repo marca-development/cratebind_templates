@@ -15,7 +15,7 @@ module Cratebind
 			columns = columns.to_s.gsub('[','').gsub(']','')
 			create_file "app/controllers/api/#{plural_name}_controller.rb", <<-FILE
 class Api::#{class_name.pluralize}Controller < Api::ResourceController
-	wrap_parameters :#{plural_name.singularize}, include: [#{columns}]
+	wrap_parameters :#{plural_name.singularize}, include: %i(#{columns.gsub(',','').gsub(':','')})
 	load_and_authorize_resource class: #{class_name}
 
 	private

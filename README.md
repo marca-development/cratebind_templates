@@ -15,7 +15,7 @@ and then run bundle update.
 
 The gem has five (5) generators:
 
-1. cratebind:controller NAME
+1. cratebind:controllers NAME
 	- generates Api::ResourceController template following our standard practice
 	- generates Api::NamesController which inherits from ResourceController
 	- assumes you are working with an api in the api namespace
@@ -45,3 +45,11 @@ rails g model order name:string amount:decimal
 rake db:migrate
 rails g cratebind:resource order
 ```
+
+
+## Changelog
+
+### 1.1.0
+- Change from railsMessages to notificationService since everyone now should use pnotify
+- Fix bug in API controller generation
+- Fix typo in documentation

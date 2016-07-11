@@ -216,8 +216,8 @@ module Cratebind
 
     	def angular_controller
             create_file "app/assets/javascripts/#{@namespace}/angular/controllers/#{plural_name}.js", <<-FILE     
-#{@angular_app_name}Controllers.controller('#{plural_name.titlecase}IndexCtrl', ['$scope', '#{name.titlecase}', 'railsMessages',
-    function($scope, #{name.titlecase}, railsMessages) {
+#{@angular_app_name}Controllers.controller('#{plural_name.titlecase}IndexCtrl', ['$scope', '#{name.titlecase}', 'notificationService',
+    function($scope, #{name.titlecase}, notificationService) {
         $scope.q = {
             s: {}
         }
@@ -251,7 +251,7 @@ module Cratebind
                 var index = $scope.#{plural_name}.indexOf(#{name});
                 $scope.#{plural_name}.splice(index, 1);
             }, function(err) {
-                railsMessages.process(err);
+                notificationService.error($scope.returnText(err));
             });
         }
 
@@ -261,24 +261,24 @@ module Cratebind
     }
 ]);
 
-#{@angular_app_name}Controllers.controller('#{plural_name.titlecase}NewCtrl', ['$scope', '#{name.titlecase}', 'railsMessages', '$location',
-    function($scope, #{name.titlecase}, railsMessages, $location) {
+#{@angular_app_name}Controllers.controller('#{plural_name.titlecase}NewCtrl', ['$scope', '#{name.titlecase}', 'notificationService', '$location',
+    function($scope, #{name.titlecase}, notificationService, $location) {
         $scope.#{name} = new #{name.titlecase}();
 
         $scope.save#{name.titlecase} = function(#{name}) {
             #{name.titlecase}.save(#{name}, function(res) {
-                railsMessages.add('#{name.titlecase} was created successfully', 'alert alert-success');
+                notificationService.add('#{name.titlecase} was created successfully');
                 $location.path('/#{@namespace}/#{plural_name}/' + res.id);
             }, function(err) {
-                railsMessages.process(err);
+                notificationService.error($scope.returnText(err));
             });
         }
 
     }
 ]);
 
-#{@angular_app_name}Controllers.controller('#{plural_name.titlecase}EditCtrl', ['$scope', 'railsMessages', '$location', '#{name.titlecase}', '$routeParams',
-    function($scope, railsMessages, $location, #{name.titlecase}, $routeParams) {
+#{@angular_app_name}Controllers.controller('#{plural_name.titlecase}EditCtrl', ['$scope', 'notificationService', '$location', '#{name.titlecase}', '$routeParams',
+    function($scope, notificationService, $location, #{name.titlecase}, $routeParams) {
 
         $scope.#{name} = #{name.titlecase}.get({
             id: $routeParams.id
@@ -288,10 +288,10 @@ module Cratebind
             #{name}.$update({
                 id: #{name}.id
             }, function(res) {
-                railsMessages.add('#{name.titlecase} was updated successfully', 'alert alert-success');
+                notificationService.add('#{name.titlecase} was updated successfully');
                 $location.path('/#{@namespace}/#{plural_name}/' + res.id);
             }, function(err) {
-                railsMessages.process(err);
+                notificationService.error($scope.returnText(err));
             });
         }
 
